@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>名前</th>
+			<th>年齢</th>
+		</tr>
+		<tr th:each="user : ${users}">
+			<td th:text="${user.name}"></td>
+			<td th:text="${user.age}"></td>
+			
+			<td>
+				<a href="#" th:href="@{'form/' + ${user.id}}">編集</a>	
+			</td>
+			<td>
+				<form action="#" th:action="@{'/delete/' + ${user.id}}" method="post">
+                    <button>削除</button>
+                </form>
+			</td>
+		</tr>
+	</table>
+	<p><a th:href="@{/form}">入力フォーム</a></p>
+</body>
+</html>
